@@ -1,4 +1,6 @@
 import react from '@vitejs/plugin-react'
+
+// required for custom shaders
 import glsl from 'vite-plugin-glsl'
 
 const isCodeSandbox = !!process.env.SANDBOX_URL
@@ -7,6 +9,8 @@ export default {
     plugins:
     [
         react(),
+        
+        // required for custom shaders
         glsl()
     ],
     root: "src/",

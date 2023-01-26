@@ -7,6 +7,7 @@ const root = ReactDOM.createRoot(document.querySelector('#root'))
 
 root.render(
     <Canvas
+        flat // toneMapping was done in blender so we want to turn the default toneMapping of r3f off
         camera={ {
             fov: 45,
             near: 0.1,
