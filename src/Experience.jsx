@@ -1,6 +1,20 @@
-import { Center, OrbitControls, Sparkles, useGLTF, useTexture } from '@react-three/drei'
+import { Center, OrbitControls, shaderMaterial, Sparkles, useGLTF, useTexture } from '@react-three/drei'
+import { extend } from '@react-three/fiber'
+import * as THREE from 'three'
 import portalVertexShader from './shaders/portal/vertex.glsl'
 import portalFragmentShader from './shaders/portal/fragment.glsl'
+
+const PortalMaterial = shaderMaterial(
+    {
+        uTime: 0,
+        uColorStart: new THREE.Color(0xffffff),
+        uColorEnd: new THREE.Color(0x000000)
+    },
+    portalVertexShader,
+    portalFragmentShader
+)
+
+extend({ PortalMaterial }) // this extend helper makes a class available as jsx
 
 export default function Experience()
 {
@@ -42,7 +56,15 @@ export default function Experience()
                 position={ nodes.portalLight.position }
                 rotation={ nodes.portalLight.rotation }
             >
-                <shaderMaterial />
+                <shaderMaterial
+                    vertexShader={ portalVertexShader }
+                    fragmentShader={ portalFragmentShader }
+                    uniforms={{
+                        uTime: { value: 0 },
+                        uColorStart: { value: new THREE.Color(0xffffff) },
+                        uColorEnd: { value: new THREE.Color(0x000000) },
+                    }}
+                />
             </mesh>
 
             {/* fireflies */}
