@@ -1,4 +1,6 @@
 import { Center, OrbitControls, Sparkles, useGLTF, useTexture } from '@react-three/drei'
+import portalVertexShader from './shaders/portal/vertex.glsl'
+import portalFragmentShader from './shaders/portal/fragment.glsl'
 
 export default function Experience()
 {
