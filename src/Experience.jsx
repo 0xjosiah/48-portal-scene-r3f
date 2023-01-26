@@ -37,6 +37,13 @@ export default function Experience()
 
         <Center>
             <Portal />
+            <Sparkles 
+                count={ 50 }
+                size={ 6 }
+                scale={ [ 4, 2, 4 ] }
+                position-y={ 1 }
+                speed={ 0.35 }
+            />
         </Center>
 
         {/* <Center> */}
